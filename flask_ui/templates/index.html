@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset='utf-8'>
+        <title>Movie Information</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='/css/style.css') }}"/>
+        <script src="/static/js/script_fixed.js"></script>
+
+    </head>
+    <body>
+        <header>
+            <div class="nav">
+                <hr/>
+                    <nav>
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/upload">Upload Movies Info</a></li>
+                            <li><a href="/modify">Modify Movies Info</a></li>
+                            <li><a href="/delete">Delete Movies Info</a></li>
+                        </ul>
+
+                    </nav>
+                <hr/>
+            </div>
+            <h1 class="headh1">Welcome To Free Movie Server</h1>
+            <h2 class="headh1">click on Show Button to see all movies</h2>
+            <button type="button" class="nbtn" onclick="filterSelection('all')" >Show</button>
+            <!-- -->
+        </header>
+
+        <!-- movie upload code  -->
+        <div id="closed" class="cards">
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $(".nbtn").on("click", function(){
+                    // initialize(); 
+                    var url='/Raw';
+                    $.getJSON(url, function(response){
+                        var tag = "";
+                        $.each(response, function(key, val){
+                            tag += '<a class="link" href=' + "/Movies/" + key + '>';
+                            tag += '    <div class="column">';
+                            tag += '        <div class="content">';
+                            tag += '            <h4>' + val.title + '</h4>';
+                            tag += '        </div>';
+                            tag += '    </div>';
+                            tag += '</a>';
+                            // $("#closed").html(tag);
+                            // tag = "";
+                        });
+                        // document.write(tag);
+                        $("#closed").append(tag);
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>

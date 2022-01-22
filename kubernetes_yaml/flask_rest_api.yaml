@@ -1,0 +1,46 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: flask-rest-api
+  namespace: flask
+  labels:
+    app: flask
+    role: rest-api
+spec:
+  selector:
+    matchLabels:
+      app: flask
+      role: rest-api
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: flask
+        role: rest-api
+        tier: backend
+    spec:
+      containers:
+      - name: flask-rest-api
+        image: wonjin77/flask-rest-api:1.0 ###################################
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        env:
+        - name: GET_HOSTS_FROM
+          value: env
+        ports:
+        - containerPort: 5001
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-rest-api-service
+  namespace: flask
+spec:
+  selector:
+    app: flask
+    role: rest-api
+  ports:
+  - protocol: TCP
+    port: 5001
