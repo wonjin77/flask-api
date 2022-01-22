@@ -44,5 +44,6 @@ spec:
     role: ui
   ports:
   - protocol: TCP
-    port: 80
+    port: 5000
     targetPort: 5000
+    nodePort: 80
