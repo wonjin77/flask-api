@@ -6,7 +6,8 @@ import html
 
 app = Flask(__name__)
 
-host = 'flask-rest-api-service.flask.svc.kr-central-1.c.kakaoi.io'
+# host = 'flask-rest-api-service.flask.svc.kr-central-1.c.kakaoi.io'
+host = 'curl http://flask-rest-api-service.flask.svc.cluster.local'
 # host = 'localhost'
 address = f'http://{host}:5001/Movies/'
 
