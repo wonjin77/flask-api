@@ -3,7 +3,7 @@ FROM python:3.8-alpine
 WORKDIR /app
 
 # Install native libraries, required for numpy
-RUN apk --no-cache add musl-dev linux-headers g++
+RUN apk --no-cache add musl-dev linux-headers g++ git
 
 # Upgrade pip
 RUN pip install --upgrade pip
