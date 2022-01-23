@@ -5,8 +5,10 @@ import pandas as pd
 import html
 
 app = Flask(__name__)
-address = 'http://flask-rest-api-service.flask.svc.kr-central-1.c.kakaoi.io:5001/Movies/'
-# address = 'http://localhost:5001/Movies/'
+
+host = 'flask-rest-api-service.flask.svc.kr-central-1.c.kakaoi.io'
+# host = 'localhost'
+address = f'http://{host}:5001/Movies/'
 
 
 @app.route("/")
