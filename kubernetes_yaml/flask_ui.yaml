@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: flask-ui
-        image: wonjin77/flask-ui:0.4
+        image: wonjin77/flask-ui:2.0
         resources:
           requests:
             cpu: 100m
