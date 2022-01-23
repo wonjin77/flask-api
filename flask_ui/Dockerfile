@@ -2,6 +2,7 @@ FROM python:3.8
 
 WORKDIR /app
 
+RUN apt install git
 # Upgrade pip
 RUN pip install --upgrade pip
 
@@ -11,7 +12,7 @@ RUN pip install numpy  --no-cache-dir && \
 
 RUN pip install flask
 RUN pip install requests
-# RUN pip install pandas
+
 
 EXPOSE 5000
 
