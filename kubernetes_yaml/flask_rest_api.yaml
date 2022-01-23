@@ -38,7 +38,7 @@ metadata:
   name: flask-rest-api-service
   namespace: flask
 spec:
-  # type: NodePort
+  type: NodePort
   selector:
     app: flask
     role: rest-api
@@ -46,4 +46,4 @@ spec:
   - protocol: TCP
     port: 5001
     targetPort: 5001
-    # nodePort: 30501
+    nodePort: 30501
