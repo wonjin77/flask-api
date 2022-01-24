@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: flask-rest-api
-        image: wonjin77/flask-rest-api:1.0
+        image: wonjin77/flask-rest-api:2.1
         resources:
           requests:
             cpu: 100m
