@@ -18,11 +18,23 @@ def index():
 
 @app.route('/Movies')
 def total():
-    r = requests.get(address) 
-    total_movie = eval(r.text)
-    df_info = pd.DataFrame(data=total_movie['movie_info']).T
+    # r = requests.get(address) 
+    # total_movie = eval(r.text)
+    movie_dict = get_raw()
+    df_info = pd.DataFrame(data=movie_dict).T
     df_info.to_html('templates/df_html.html', classes='movie_info')
     return render_template('df_html.html')
+
+@app.route('/Movies/<int:title_id>')
+def detail(title_id):
+    # r = requests.get(address) 
+    # total_movie = eval(r.text)
+    movie_dict = get_raw()
+    df_info = pd.DataFrame(data=movie_dict).T
+    df_info_detail = df_info.loc[str(title_id):str(title_id)]
+    df_info_detail.to_html('templates/df_detail_html.html', classes='movie_info_detail')
+    return render_template('df_detail_html.html')
+
 
 @app.route('/Raw')
 def get_raw():
