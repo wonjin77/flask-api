@@ -16,6 +16,12 @@ address = f'http://{host}:5001/Movies/'
 def index():
     return render_template('index.html')
 
+@app.route('/Raw')
+def get_raw():
+    r = requests.get(address) 
+    total_movie = eval(r.text)
+    return total_movie['movie_info']
+
 @app.route('/Movies')
 def total():
     # r = requests.get(address) 
@@ -35,12 +41,6 @@ def detail(title_id):
     df_info_detail.to_html('templates/df_detail_html.html', classes='movie_info_detail')
     return render_template('df_detail_html.html')
 
-
-@app.route('/Raw')
-def get_raw():
-    r = requests.get(address) 
-    total_movie = eval(r.text)
-    return total_movie['movie_info']
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000, debug=True)
